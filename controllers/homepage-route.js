@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Post } = require('../models');
 
 // Get all posts.
-router.get('/post', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll()
     res.json(postData);
@@ -12,7 +12,7 @@ router.get('/post', async (req, res) => {
 });
 
 // Get one post by ID.
-router.get('/post/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id);
     res.json(postData);
@@ -22,7 +22,7 @@ router.get('/post/:id', async (req, res) => {
 });
 
 // Create a new post.
-router.post('/post', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const postData = await Post.create(req.body);
     res.json(postData);
@@ -32,7 +32,7 @@ router.post('/post', async (req, res) => {
 });
 
 // Update a post by ID.
-router.put('/post/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
     const updatedPost = await Post.update(req.body, {
       where: {
@@ -46,7 +46,7 @@ router.put('/post/:id', async (req, res) => {
 });
 
 // Delete post by ID.
-router.delete('/post/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const deletedPost = await Post.destroy({
       where: {

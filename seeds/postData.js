@@ -10,7 +10,6 @@ const postdata = [
     description: 'dam.'
   }
 ];
-console.log("here", Post);
 const seedPost = () => Post.bulkCreate(postdata).then(() => console.log("Posts seeded!"));
 
 module.exports = seedPost;
