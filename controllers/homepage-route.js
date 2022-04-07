@@ -14,6 +14,11 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Sign Up
+router.get('/signup', (req, res) => {
+  res.render('signup');
+});
+
 // Get one post by ID.
 router.get('/:id', async (req, res) => {
   try {
@@ -61,5 +66,7 @@ router.delete('/:id', async (req, res) => {
     res.json(err);
   }
 });
+
+
 
 module.exports = router;
