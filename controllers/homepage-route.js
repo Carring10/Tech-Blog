@@ -5,9 +5,9 @@ const { Post } = require('../models');
 router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll();
-
+    // Loop through each post, turning them into a plain obj
     const posts = postData.map((post) => post.get({ plain: true }));
-    console.log(posts);
+    // to have them all rendered to the landing page template with handlebars
     res.render('landingpage', { posts });
   } catch (err) {
     res.json(err);
@@ -16,7 +16,14 @@ router.get('/', async (req, res) => {
 
 // Sign Up
 router.get('/signup', (req, res) => {
+  // Render handlebars sign up page.
   res.render('signup');
+}); 
+
+// Login
+router.get('/login', (req, res) => {
+  // Render handlebars login page.
+  res.render('login');
 });
 
 // Get one post by ID.
