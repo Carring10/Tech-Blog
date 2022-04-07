@@ -4,8 +4,11 @@ const { Post } = require('../models');
 // Get all posts.
 router.get('/', async (req, res) => {
   try {
-    const postData = await Post.findAll()
-    res.json(postData);
+    const postData = await Post.findAll();
+
+    const posts = postData.map((post) => post.get({ plain: true }));
+    console.log(posts);
+    res.render('landingpage', { posts });
   } catch (err) {
     res.json(err);
   }
