@@ -6,13 +6,17 @@ router.post('/', async (req, res) => {
   try {
     const userData = await User.create({
       username: req.body.username,
-      email: req.body.email,
       password: req.body.password,
     });
 
     // TODO: save their session
+    // Sets the login variable to true
+    req.session.save(() => {
+      req.session.loggedIn = true;
+      res.status(200).json(userData);
+    });
 
-    res.json(userData);
+    
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -23,22 +27,32 @@ router.post('/', async (req, res) => {
 // Login
 router.post('/login', async (req, res) => {
   try {
+    console.log(req.body)
     const userData = await User.findOne({
       where: {
-        email: req.body.email,
+        username: req.body.username,
       },
     });
-
+    console.log(userData)
     if (!userData) {
-      res.json({ message: 'Your email or password is incorrect.' });
+      res.status(400).json({ message: 'Your username is incorrect.' });
       return;
     }
 
-    const correctPassword = await userData.checkPassword(req.body.password);
+    const correctPassword = userData.checkPassword(req.body.password);
 
     if (!correctPassword) {
-      res.json({ message: 'You are logged in.'})
+      res.json({ message: 'Your password is incorrect.'});
+      console.log('here')
+      return;
     }
+    req.session.save(() => {
+      req.session.loggedIn = true;
+      console.log(req);
+      console.log(userData);
+      res.status(200).json({ message: 'You are logged in.' });
+    })
+
   } catch (err) {
     res.json(err);
   }
@@ -46,5 +60,15 @@ router.post('/login', async (req, res) => {
 
 
 // TODO: destroy their session when they logout.
+// Logout
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
+});
 
 module.exports = router;
