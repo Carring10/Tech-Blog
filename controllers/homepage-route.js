@@ -17,13 +17,13 @@ router.get('/', async (req, res) => {
 // Sign Up
 router.get('/signup', (req, res) => {
   // Render handlebars sign up page.
-  res.render('signup');
+  res.render('signup', { loggedIn: req.session.loggedIn });
 }); 
 
 // Login
 router.get('/login', (req, res) => {
   // Render handlebars login page.
-  res.render('login');
+  res.render('login', { loggedIn: req.session.loggedIn });
 });
 
 // Get one post by ID.
