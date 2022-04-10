@@ -4,7 +4,14 @@ const { Post } = require('../models');
 // Get all posts.
 router.get('/', async (req, res) => {
   try {
-    const postData = await Post.findAll({});
+    const postData = await Post.findAll({
+      // include: [
+      //   {
+      //     model: User,
+      //     attributes: 'username',
+      //   },
+      // ],
+    });
     console.log(postData)
     // Loop through each post, turning them into a plain obj
     const posts = postData.map((post) => post.get({ plain: true }));
@@ -14,6 +21,8 @@ router.get('/', async (req, res) => {
     res.json(err);
   }
 });
+
+
 
 // Get one post by ID.
 router.get('/:id', async (req, res) => {
@@ -28,7 +37,10 @@ router.get('/:id', async (req, res) => {
 // Create a new post.
 router.post('/', async (req, res) => {
   try {
-    const postData = await Post.create(req.body);
+    const postData = await Post.create({
+      ...req.body,
+      user_id: req.session.user_id,
+    });
     res.json(postData);
   } catch (err) {
     res.json(err);
