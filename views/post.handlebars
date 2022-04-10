@@ -1,4 +1,11 @@
 <div class="post">
-  <h1>{{post.title}}</h1>
-  <p>{{post.description}}</p>
+  <form class="edit-post-form">
+    <p>Edit title:</p>
+  <input id="edit-title" type="text" value="{{post.title}}">
+  <p>Edit description:</p>
+  <input id="edit-description" type="text" value="{{post.description}}">
+  <button type="submit">Finish</button>
+  </form>
 </div>
+
+<script src="/js/edit-post.js"></script>
