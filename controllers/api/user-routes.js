@@ -27,13 +27,12 @@ router.post('/', async (req, res) => {
 // Login
 router.post('/login', async (req, res) => {
   try {
-    console.log(req.body)
     const userData = await User.findOne({
       where: {
         username: req.body.username,
       },
     });
-    console.log(userData)
+
     if (!userData) {
       res.status(400).json({ message: 'Your username is incorrect.' });
       return;
@@ -46,12 +45,12 @@ router.post('/login', async (req, res) => {
       console.log('here')
       return;
     }
+
     req.session.save(() => {
       req.session.loggedIn = true;
-      console.log(req);
-      console.log(userData);
-      res.status(200).json({ message: 'You are logged in.' });
+      res.status(200).json({ message: 'You are logged in.' }).redirect('/dashboard');
     })
+
 
   } catch (err) {
     res.json(err);

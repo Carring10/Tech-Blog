@@ -4,11 +4,11 @@ const { Post } = require('../models');
 // Get all posts.
 router.get('/', async (req, res) => {
   try {
-    const postData = await Post.findAll();
+    const postData = await Post.findAll({});
+    console.log(postData)
     // Loop through each post, turning them into a plain obj
     const posts = postData.map((post) => post.get({ plain: true }));
     // to have them all rendered to the landing page template with handlebars
-    console.log(posts)
     res.render('dashboard', { posts });
   } catch (err) {
     res.json(err);

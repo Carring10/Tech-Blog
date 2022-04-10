@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
     // Loop through each post, turning them into a plain obj
     const posts = postData.map((post) => post.get({ plain: true }));
     // to have them all rendered to the landing page template with handlebars
-    res.render('landingpage', { posts });
+    res.render('home', { posts });
   } catch (err) {
     res.json(err);
   }
