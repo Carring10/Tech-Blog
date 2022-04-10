@@ -1,14 +1,9 @@
 <h1>Dashboard</h1>
+<div id="container">
 {{#each posts}}
-<div id="newPost">
-<h1>
-  {{title}}
-</h1>
-<p>{{description}}</p>
-<p>{{format_time date_created}}</p>
-<p>{{username}}</p>
-</div>
+{{> post-details}}
 {{/each}}
+</div>
 
 <a href="/new-post">New Post</a>
 

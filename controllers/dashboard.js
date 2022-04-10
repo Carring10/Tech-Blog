@@ -28,7 +28,9 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id);
-    res.json(postData);
+    const post = postData.get({ plain: true });
+
+    res.render('post', { post })
   } catch (err) {
     console.log(err);
   }
