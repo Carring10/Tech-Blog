@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User } = require('../models');
+const { Post, User, Comment } = require('../models');
 
 // Get all posts.
 router.get('/', async (req, res) => {
@@ -10,6 +10,10 @@ router.get('/', async (req, res) => {
           model: User,
           required: true,
           attributes: ['username'],
+        },
+        {
+          model: Comment,
+          attributes: ['text'],
         },
       ],
     });
@@ -35,11 +39,6 @@ router.get('/login', (req, res) => {
   res.render('login', { loggedIn: req.session.loggedIn });
 });
 
-// // dashboard
-// router.get('/dashboard', (req, res) => {
-//   // Render handlebars dashboard page.
-//   res.render('dashboard', { loggedIn: req.session.loggedIn });
-// });
 
 
 module.exports = router;

@@ -1,5 +1,8 @@
-<form>
-{{> comment-details}}
-<input value="leave a comment">
+<form id="comment-form">
+<h1>{{post.title}}</h1>
+<p>{{post.description}}</p>
+<input id="comment-input" placeholder="leave a comment">
 <button type="submit">Submit</button>
 </form>
+
+<script src="/js/comment.js"></script>
