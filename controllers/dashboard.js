@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
       // include: [
       //   {
       //     model: User,
-      //     attributes: 'username',
+      //     attributes: ['username'],
       //   },
       // ],
     });
@@ -51,8 +51,6 @@ router.post('/', async (req, res) => {
 
 // Update a post by ID.
 router.put('/:id', async (req, res) => {
-  console.log(req.params)
-  console.log(req.body.title)
   try {
     const updatedPost = await Post.update(
       {
@@ -65,7 +63,6 @@ router.put('/:id', async (req, res) => {
         },
       }
     )
-    console.log("HERE", updatedPost)
     res.json(updatedPost);
   } catch (err) {
     res.json(err);

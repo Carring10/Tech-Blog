@@ -49,7 +49,7 @@ router.post('/login', async (req, res) => {
 
     req.session.save(() => {
       req.session.loggedIn = true;
-      res.status(200).json({ message: 'You are logged in.' }).redirect('/dashboard');
+      res.status(200).json({ message: 'You are logged in.' });
     })
 
 

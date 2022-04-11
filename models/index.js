@@ -1,5 +1,6 @@
 const Post = require('./Post');
 const User = require('./User');
+const Comment = require('./Comment');
 
 // Associations
 
@@ -21,4 +22,4 @@ Post.belongsTo(User, {
 
 // TODO: A comment belongs to a user
 
-module.exports = { Post, User };
+module.exports = { Post, User, Comment };
