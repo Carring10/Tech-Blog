@@ -18,4 +18,19 @@ function editPostForm(event) {
   }
 }
 
+function deletePost(event) {
+  event.preventDefault();
+  const id = window.location.pathname.replace('/dashboard/', '');
+
+  fetch(`/dashboard/${id}`, {
+    method: 'DELETE',
+  }).then((response) => {
+    if (response.ok) {
+      document.location.replace('/dashboard');
+    } 
+  })
+}
+
+document.getElementById('delete-button').addEventListener('click', deletePost);
+
 document.querySelector('.edit-post-form').addEventListener('submit', editPostForm);
