@@ -1,0 +1,25 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+header {
+  background-color: #5e877f;
+  padding: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #234234;
+  margin: 10px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.page-header {
+  color: #3d5852;
+  padding: 20px;
+}
