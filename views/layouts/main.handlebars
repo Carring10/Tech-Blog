@@ -12,16 +12,16 @@
 
 <body>
   <header>
-  <nav>
     <h1><span><</span> The Tech Blog <span>/></span></h1>
+  <nav>
     {{#if loggedIn}}
     <button id="logout">Logout</button>
+    <a href="/dashboard">Dashboard</a>
     {{else}}
     <a href="/signup">Sign Up</a>
     <a href="/login">Login</a>
     {{/if}}
     <a href="/">Home</a>
-    <a href="/dashboard">Dashboard</a>
   </nav>
   </header>
   {{{ body }}}

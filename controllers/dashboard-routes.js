@@ -8,9 +8,12 @@ router.get('/', async (req, res) => {
       include: [
         {
           model: User,
-          attributes: ['username'],
+          attributes: ['username', 'id'],
         },
       ],
+      where: {
+        user_id: req.session.user_id,
+      }
     });
     console.log(postData)
     // Loop through each post, turning them into a plain obj
