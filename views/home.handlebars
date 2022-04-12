@@ -1,11 +1,16 @@
 <h1>Home</h1>
 {{#each posts}}
-<h1>
-  {{title}}
-</h1>
-<p>{{description}}</p>
-<p>{{format_time date_created}}</p>
-<p>- {{user.username}}</p>
-<a href="/comment/{{id}}">Leave a comment</a>
+  <h1>
+    {{title}}
+  </h1>
+  <p>{{description}}</p>
+  <p>{{format_time date_created}}</p>
+  <p>- {{user.username}}</p>
+  <p>{{comment.text}}</p>
+  {{!-- ../ escapes the each statement since loggedIn isnt a property of 'posts' --}}
+  {{#if ../loggedIn}}
+    <a href="/comment/{{id}}">Leave a comment</a>
+  {{else}}
+    <a href="/login">Login to comment</a>
+  {{/if}}
 {{/each}}
-

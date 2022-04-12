@@ -1,27 +1,28 @@
 const router = require('express').Router();
-const { Post } = require('../models');
+const { Post, User } = require('../models');
 
 // Get all posts.
 router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll({
-      // include: [
-      //   {
-      //     model: User,
-      //     attributes: ['username'],
-      //   },
-      // ],
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+      ],
     });
     console.log(postData)
     // Loop through each post, turning them into a plain obj
     const posts = postData.map((post) => post.get({ plain: true }));
     // to have them all rendered to the landing page template with handlebars
-    res.render('dashboard', { posts });
+    console.log('dashboard', req.session.loggedIn);
+    const loggedIn = req.session.loggedIn;
+    res.render('dashboard', { posts, loggedIn });
   } catch (err) {
     res.json(err);
   }
 });
-
 
 
 // Get one post by ID.
@@ -30,7 +31,7 @@ router.get('/:id', async (req, res) => {
     const postData = await Post.findByPk(req.params.id);
     const post = postData.get({ plain: true });
 
-    res.render('post', { post })
+    res.render('post', { post, loggedIn: req.session.loggedIn })
   } catch (err) {
     console.log(err);
   }

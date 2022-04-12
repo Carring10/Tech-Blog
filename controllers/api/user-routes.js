@@ -43,17 +43,18 @@ router.post('/login', async (req, res) => {
 
     if (!correctPassword) {
       res.json({ message: 'Your password is incorrect.'});
-      console.log('here')
       return;
     }
 
     req.session.save(() => {
+      req.session.user_id = userData.id;
       req.session.loggedIn = true;
       res.status(200).json({ message: 'You are logged in.' });
     })
 
 
   } catch (err) {
+    console.log(err);
     res.json(err);
   }
 })
@@ -61,7 +62,7 @@ router.post('/login', async (req, res) => {
 
 // TODO: destroy their session when they logout.
 // Logout
-router.post('/logout', (req, res) => {
+router.delete('/logout', (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();

@@ -1,10 +1,16 @@
 <h1>Dashboard</h1>
-<div id="container">
-{{#each posts}}
-{{> post-details}}
-{{/each}}
-</div>
+{{ isLoggedIn loggedIn }}
+{{#if loggedIn}}
+  <div id="container">
+    {{#each posts}}
+      {{> post-details}}
+    {{/each}}
+  </div>
 
-<a href="/new-post">New Post</a>
+  <a href="/new-post">New Post</a>
+{{else}}
+  <a href="/login">You must be logged in to see your posts.</a>
+{{/if}}
 
-{{!-- <script src="/js/dashboard.js"></script> --}}
+{{!--
+<script src="/js/dashboard.js"></script> --}}

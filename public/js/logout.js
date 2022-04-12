@@ -1,9 +1,8 @@
 function logout(event) {
   event.preventDefault();
 
-    fetch('/api/users/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    fetch('/api/users/logout', {
+      method: 'DELETE',
     }).then((response) => {
       if (response.ok) {
         document.location.replace('/');

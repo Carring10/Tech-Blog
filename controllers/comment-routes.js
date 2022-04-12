@@ -6,9 +6,8 @@ router.get('/:id', async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id);
     const post = postData.get({ plain: true });
-    console.log('here', post)
 
-    res.render('comment', { post })
+    res.render('comment', { post, loggedIn: req.session.loggedIn })
   } catch (err) {
     console.log(err);
   }
@@ -19,6 +18,8 @@ router.post('/:id', async(req, res) => {
   try {
     const commentData = await Comment.create({
       text: req.body.text,
+      user_id: req.session.user_id,
+      loggedIn: req.session.loggedIn,
     });
     res.json(commentData);
   } catch (err) {
