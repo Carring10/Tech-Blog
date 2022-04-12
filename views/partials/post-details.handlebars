@@ -1,10 +1,8 @@
-<section class="card">
-  <a href="/dashboard/{{id}}">
-    <h1>
-      {{title}}
-    </h1>
-    <p>{{description}}</p>
-    <p>{{format_time date_created}}</p>
-    <p>{{username}}</p>
+<div class="post-card">
+  <a class="link-to-post" href="/dashboard/{{id}}">
+  <h3><span>{{user.username}}</span> &#8250 {{format_time date_created}}</h3>
+  <h1>{{title}}</h1>
+  <p>{{description}}</p>
+  <p>{{comment.text}}</p>
   </a>
-</section>
+</div>

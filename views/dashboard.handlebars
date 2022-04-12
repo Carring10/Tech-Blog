@@ -1,11 +1,11 @@
-<h1 class="page-header">Dashboard</h1>
+<h1 class="page-header">&#187 Dashboard</h1>
 {{ isLoggedIn loggedIn }}
 {{#if loggedIn}}
-  <div id="container">
+  {{!-- <div id="container"> --}}
     {{#each posts}}
       {{> post-details}}
     {{/each}}
-  </div>
+  {{!-- </div> --}}
 
   <a href="/new-post">New Post</a>
 {{else}}

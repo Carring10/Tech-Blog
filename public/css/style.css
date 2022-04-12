@@ -1,17 +1,31 @@
+:root {
+  --main-bg-color: #e6e6e6;
+  --border-color: #a0a0a0;
+  --accent-color: #ff5d73;
+  --text-color: #9c9c9c;
+}
+
 * {
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
+  font-family: 'Anek Odia', sans-serif;
+}
+
+body {
+  background-color: var(--main-bg-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 header {
-  background-color: #5e877f;
   padding: 20px;
+  align-self: flex-start;
 }
 
 nav a {
   text-decoration: none;
-  color: #234234;
   margin: 10px;
 }
 
@@ -19,7 +33,115 @@ nav a:hover {
   text-decoration: underline;
 }
 
+header h1 {
+  border: 1px solid var(--border-color);
+  font-size: 35px;
+  border-radius: 3px;
+  text-align: center;
+  padding: 10px;
+}
+
+h1 span {
+  color: var(--accent-color);
+  font-family: Consolas;
+  font-size: 40px;
+}
+
+nav a {
+  color: black;
+}
+
+/* Log in and sign up pages */
+
+.welcome {
+  text-align: center;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+}
+
+.login-form {
+  margin: 15px;
+  padding: 30px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  background-color: #d8d8d8;
+}
+
+.signup-form {
+  margin: 15px;
+  padding: 30px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  background-color: #d8d8d8;
+}
+
+.login-form p {
+  margin: 6px 0;
+}
+
+.signup-form p {
+  margin: 6px 0;
+  
+}
+
+input[type=text] {
+  padding: 5px 15px;
+  width: 100%;
+  margin-bottom: 15px 0;
+  border-radius: 3px;
+  border: 1px solid var(--border-color);
+}
+
+.login-button {
+  width: 100%;
+  padding: 4px;
+  margin: 15px 0;
+  background-color: var(--accent-color);
+  color: white;
+  border-radius: 3px;
+  border: 1px solid var(--accent-color);
+}
+
+.login-button:hover {
+  background-color: #ff5d7388;
+}
+
+/* Home page */
+
 .page-header {
-  color: #3d5852;
-  padding: 20px;
+  font-size: 25px;
+  color: var(--text-color);
+}
+
+.post-card {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin: 10px;
+  border: 1px solid var(--border-color);
+  background-color: #d8d8d8;
+  border-radius: 5px;
+  padding: 15px;
+  width: 50%;
+}
+
+.post-card h3 {
+  align-self: flex-end;
+}
+
+.post-card h3 span {
+  color: var(--accent-color);
+}
+
+.login-link {
+  color: var(--text-color)
+}
+
+.link-to-post {
+  width: 100%;
+  text-decoration: none;
+  color: black;
 }
