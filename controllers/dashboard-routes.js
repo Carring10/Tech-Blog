@@ -19,7 +19,12 @@ router.get('/', async (req, res) => {
     const posts = postData.map((post) => post.get({ plain: true }));
     // to have them all rendered to the landing page template with handlebars
     const loggedIn = req.session.loggedIn;
-    res.render('dashboard', { posts, loggedIn });
+
+    if (loggedIn) {
+      res.render('dashboard', { posts, loggedIn });
+    } else {
+      res.render('dashboard');
+    }
   } catch (err) {
     res.json(err);
   }
