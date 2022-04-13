@@ -4,7 +4,7 @@
 
 ## Description
 
-This application allows you to submit a post to the homepage where it can be viewed by other users, you can view their posts as well. Once you submit a post, only you can then edit or delete them.
+This application allows you to submit a post to the homepage where it can be viewed by other users, you can see their posts as well. Once you submit a post, only you can then edit or delete them.
 
 ## Visuals
 
