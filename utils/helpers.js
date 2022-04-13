@@ -4,13 +4,4 @@ module.exports = {
     // We use the 'toLocaleTimeString()' method to format the time as H:MM:SS AM/PM
     return date.toLocaleDateString();
   },
-
-//   isLoggedIn: (loggedIn) => {
-//     console.log(loggedIn)
-//     if (loggedIn) {
-//       return "Yes"
-//     } else {
-//       return "No"
-//     }
-//   }
 };

@@ -25,6 +25,7 @@ router.get('/', async (req, res) => {
     } else {
       res.render('dashboard', { loggedIn });
     }
+    
   } catch (err) {
     res.json(err);
   }
