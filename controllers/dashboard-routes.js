@@ -15,11 +15,9 @@ router.get('/', async (req, res) => {
         user_id: req.session.user_id,
       }
     });
-    console.log(postData)
     // Loop through each post, turning them into a plain obj
     const posts = postData.map((post) => post.get({ plain: true }));
     // to have them all rendered to the landing page template with handlebars
-    console.log('dashboard', req.session.loggedIn);
     const loggedIn = req.session.loggedIn;
     res.render('dashboard', { posts, loggedIn });
   } catch (err) {

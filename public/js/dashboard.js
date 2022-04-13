@@ -18,9 +18,3 @@ function createPost(event) {
     }
   }
 }
-
-// function goToNewPostPage() {
-//   location.href = "/new-post";
-// }
-
-// document.getElementById('addNewPost').addEventListener('click', goToNewPostPage);

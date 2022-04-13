@@ -5,13 +5,12 @@ module.exports = {
     return date.toLocaleDateString();
   },
 
-  isLoggedIn: (loggedIn) => {
-    console.log(loggedIn)
-    if (loggedIn) {
-      return "Yes"
-    } else {
-      return "No"
-    }
-  }
+//   isLoggedIn: (loggedIn) => {
+//     console.log(loggedIn)
+//     if (loggedIn) {
+//       return "Yes"
+//     } else {
+//       return "No"
+//     }
+//   }
 };
-
